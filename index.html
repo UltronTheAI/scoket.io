@@ -232,7 +232,12 @@
 
             }
         }
-       
+        var d54 = String(window.location.href).replace('?n=', '').replace(' ', '').replace('https://ultrontheai.github.io/scoket.io', '').replace('\\', '').replace('/', '');
+        //alert(d54);
+        if (d54 != '') {
+            document.querySelector(".for").remove();
+            socket.emit('message', [d54, "Join the chat..."]);
+        }
     </script>
 
 </body>
