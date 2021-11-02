@@ -232,12 +232,7 @@
 
             }
         }
-        var d54 = String(window.location.href).replace('http://192.168.1.4:3001/?n=', '').replace(' ', '').replace('http://192.168.1.4:3001/', '');
-        //alert(d54);
-        if (d54 != '') {
-            document.querySelector(".for").remove();
-            socket.emit('message', [d54, "Join the chat..."]);
-        }
+       
     </script>
 
 </body>
