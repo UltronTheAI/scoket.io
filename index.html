@@ -206,16 +206,18 @@
         socket.on('connection');
         socket.on('dback9', (data) => {
             for (let iit = 0; iit < data.length; iit ++){
+                if (data[iit][1] != 'Join the chat...'){
                 if (data[iit][0] == name_u){
                     var dt = new Date();
                     ioid += 1;
-                    document.querySelector(".chat").innerHTML += "<div id=\"d" + ioid + "\" onclick=\"dellite(d" + ioid + ")\" class=\"left\"><h3>From <span>" + 'me' + "</span> &nbsp;&nbsp;&nbsp;</h3> " + data[1] + " &nbsp;&nbsp;&nbsp; <h4>" + dt.getHours() + "." + dt.getMinutes() + "</h4></div><br><br>";
+                    document.querySelector(".chat").innerHTML += "<div id=\"d" + ioid + "\" onclick=\"dellite(d" + ioid + ")\" class=\"left\"><h3>From <span>" + 'me' + "</span> &nbsp;&nbsp;&nbsp;</h3> " + data[iit][1] + " &nbsp;&nbsp;&nbsp; <h4>" + dt.getHours() + "." + dt.getMinutes() + "</h4></div><br><br>";
                 }
                 else{
                     var dt = new Date();
                     ioid += 1;
-                    document.querySelector(".chat").innerHTML += "<div id=\"d" + ioid + "\" onclick=\"dellite(d" + ioid + ")\" class=\"left\"><h3>From <span>" + data[0] + "</span> &nbsp;&nbsp;&nbsp;</h3> " + data[1] + " &nbsp;&nbsp;&nbsp; <h4>" + dt.getHours() + "." + dt.getMinutes() + "</h4></div><br><br>";
+                    document.querySelector(".chat").innerHTML += "<div id=\"d" + ioid + "\" onclick=\"dellite(d" + ioid + ")\" class=\"left\"><h3>From <span>" + data[iit][0] + "</span> &nbsp;&nbsp;&nbsp;</h3> " + data[iit][1] + " &nbsp;&nbsp;&nbsp; <h4>" + dt.getHours() + "." + dt.getMinutes() + "</h4></div><br><br>";
                 }
+            }
             }
         });
         socket.on("message", (data) => {
