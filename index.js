@@ -4,6 +4,7 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 var use = {};
+var chat = [];
 var usedata = {};
 
 // app.set("view engine", "ejs");
@@ -31,13 +32,16 @@ app.get('/', (req, res) => {
 server.listen(process.env.PORT || 5000);
 
 io.on("connection", (socket) => {
-    //console.log("User connected... user id = " + socket.id);
+    console.log("User connected... user id = " + socket.id);
+    
 
     socket.on("message", (data) => {
         //console.log("User id = {" + data[0] + "} send : " + data[1]);
         socket.broadcast.emit('message', data);
+        chat.push([data[0], data[1]]);
         if (data[1] == 'Join the chat...'){
             use[socket.id] = data[0];
+            socket.emit('dback9', chat);
             //console.log('user Join ' + use[socket.id]);
         }
     });
