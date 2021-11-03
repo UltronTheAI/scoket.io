@@ -204,6 +204,9 @@
         const socket = io('https://chatscampro99.herokuapp.com/');
 
         socket.on('connection');
+        socket.on('dback9', (data) => {
+            alert(data);
+        });
         socket.on("message", (data) => {
             var dt = new Date();
             ioid += 1;
