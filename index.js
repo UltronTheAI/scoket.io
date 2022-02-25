@@ -7,6 +7,8 @@ var use = {};
 var chat = [];
 var usedata = {};
 
+console.log("okay");
+
 // app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
